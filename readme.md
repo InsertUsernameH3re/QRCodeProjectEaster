@@ -1,7 +1,7 @@
 
 ######
 
-This is a start of a project known as egg hunting for Purkyňova Brno
+This is a start of a project known as egg hunting on Purkyňova Brno
 
 ######
 
