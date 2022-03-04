@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Purkyňka egg hunt</title>
 </head>
 <body>
@@ -18,11 +21,17 @@
     
     <div class="wrapper">
     <form action="connection.php">
-      <label for="fname">Přezdívka:</label>
-      <input type="text" id="fname" name="fname"><br><br>
-      <label for="lname">Školní email:</label>
-      <input type="text" id="lname" name="lname"><br><br>
-      <input type="submit" value="Submit">
+      <div class="wrapper">
+        <label for="fname">Přezdívka:</label><br>
+      </div>
+      <input type="text" id="fname" name="fname" maxlength="24"><br>
+      <div class="wrapper">
+        <label for="lname">Školní email:</label><br>
+      </div>
+      <input type="text" id="lname" name="lname" maxlength="64"><br>
+      <div class="wrapper">
+        <input type="submit" value="Submit">
+      </div>
     </form>
     </div>
 
