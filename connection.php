@@ -1,18 +1,30 @@
 <?php
+#error_reporting(0);
 include "data.php";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $db);
+$mysqli = new mysqli($servername, $username, $password, $db);
 
 // Check connection
-if ($conn->connect_error) {
-  die("Connection to the database failed: " . $conn->connect_error);
+if ($mysqli->connect_error) {
+  die("Connection to the database failed: " . $mysqli->connect_error);
 }
 
 echo "Connection established";
 
-$query = "INSERT INTO user (nickname, email, score) VALUES ('Michal' , 'spitz.michal@purkynka.cz', '1000')";
+try {
+  mysqli_query($mysqli, "INSERT INTO user (nickname, email, score) VALUES ('Michal' , 'spitz.michal@purkynka.cz', '1000')");
+  echo "Query delivered successfully";
+} catch (PDOException $e){
+  echo "Query failed";
+}
 
-$conn->query($query);
+if (mysqli_errno() == 1062) {
+    print 'no way!';
+}
+
+echo "Query failed";
+
+$mysqli->close();
 
 ?>
