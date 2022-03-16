@@ -12,18 +12,8 @@ if ($mysqli->connect_error) {
 
 echo "Connection established";
 
-try {
-  mysqli_query($mysqli, "INSERT INTO user (nickname, email, score) VALUES ('Michal' , 'spitz.michal@purkynka.cz', '1000')");
-  echo "Query delivered successfully";
-} catch (PDOException $e){
-  echo "Query failed";
-}
-
-if (mysqli_errno() == 1062) {
-    print 'no way!';
-}
-
-echo "Query failed";
+mysqli_query($mysqli, "INSERT INTO user (nickname, email, score) VALUES ('Michal' , 'spitz.michal@purkynka.cz', '1000')");
+echo "Query delivered successfully";
 
 $mysqli->close();
 
