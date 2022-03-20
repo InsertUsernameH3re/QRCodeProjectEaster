@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en-cs">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="registration.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>Registration</title>
+</head>
+<body>
+
 <?php
 // Includes login to the database
 include "data.php";
@@ -20,17 +34,22 @@ try {
   $statement = $mysqli->prepare("INSERT INTO user (email, score) VALUES (?,?)");
   $statement->bind_param("si", $email_whole, $default_score);
   $statement->execute();
-  echo "Query delivered successfully";
+  echo "<div class='wrapper' id='success'>Registration completed successfully</div>";
 
   // Error handeling
 } catch (Exception $e) {
   if ($mysqli->errno == 1062){
-    echo "Error: User already registered with this email address". $mysqli->errno;
+    echo "<div class='wrapper' id='error'>Error: User already registered with this email address. Error number: ". $mysqli->errno . "</div>";
   } else {
-    echo "Registration compleated successfully";
+    echo "<div class='wrapper' id='error'>Error: Wrong email address entered. Try again</div>";
   }
 }
 
 $mysqli->close();
 
 ?>
+
+<script src="background.js"></script>
+
+</body>
+</html>

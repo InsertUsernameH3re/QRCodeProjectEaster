@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="app.js"></script>
     <title>Purkyňka egg hunt</title>
 </head>
 <body>
@@ -24,10 +25,10 @@
       <div class="wrapper">
         <label for="email">Školní email:</label><br>
       </div>
-      <input type="text" name="email" maxlength="64" placeholder="jmeno.prijmeni"><br>
+      <input type="text" name="email" maxlength="64" placeholder="jmeno.prijmeni" id="email"><br>
       <span class="email">@purkynka.cz</span>
       <div class="wrapper">
-        <input type="submit" value="Submit" class="submit">
+        <input type="submit" value="Submit" class="submit" onclick="Cookie_Create()">
       </div>
     </form>
     </div>
