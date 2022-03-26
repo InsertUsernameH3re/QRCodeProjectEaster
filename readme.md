@@ -7,9 +7,9 @@ This is a start of a project known as egg hunting on Purkyňova Brno
 
 ######
 To do:
-- Create sign in website
-    - Database
-    - Signin form
-    - UI
+- Email auth
+- Cookie cross-site access, User auth
+- Add questions to database and render on site with various levels of difficulty
+
 ######
 
