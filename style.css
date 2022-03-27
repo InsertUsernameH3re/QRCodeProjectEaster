@@ -43,3 +43,43 @@ input {
 .submit {
     cursor: pointer;
 }
+
+.image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 75%;
+}
+
+.image_div {
+    position: absolute;
+    height: 100%;
+    width: 101%;
+    top: 0;
+    left: 0;
+    background-color: darkblue;
+    animation-name: logo;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+.wrapper2 {
+    margin-top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes logo {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: -120%;
+    }
+}

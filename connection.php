@@ -13,6 +13,12 @@
 <body>
 
 <?php
+setcookie("test_cookie", "test", time() + 1, '/');
+if(count($_COOKIE) > 0) {
+  echo "Cookies are enabled.";
+} else {
+  echo "Cookies are disabled.";
+}
 // Includes login to the database
 include "data.php";
 // Sets default_value to 0
