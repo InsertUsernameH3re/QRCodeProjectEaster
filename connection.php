@@ -8,9 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="app.js"></script>
   <title>Registration</title>
 </head>
-<body>
+<body onload="backgroundColor()">
 
 <?php
 // Includes login to the database
@@ -39,23 +40,21 @@ if (strlen($_POST['email'])> 5 and strlen($_POST['password']) > 0) {
     $statement->execute();
     echo "<div class='wrapper' id='success'>Registration completed successfully</div>";
     setcookie("registered", "true", time() + 864000, $secure = true);
-    setcookie("logged", "false", time() + 864000, $secure = true);
 
 // Error handeling
   } catch (Exception $e) {
     if ($mysqli->errno == 1062){
-      echo "<div class='wrapper' id='error'>Error: User already registered with this email address. Error number: ". $mysqli->errno . "</div>";
+      echo "<div class='wrapper' id='error'>Error: User already registered with this email address.</div>";
     }
   }
 } else {
-  echo "<div class='wrapper' id='error'>Error: Wrong email address or password. Try again</div>";
+  echo "<div class='wrapper' id='error'>Error: Short email or password. Try again</div>";
 }
 
 $mysqli->close();
 
 ?>
 
-<script src="background.js"></script>
 
 </body>
 </html>

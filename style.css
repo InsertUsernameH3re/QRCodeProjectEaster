@@ -7,6 +7,9 @@ body {
     background-color: wheat;
     font-size: 20px;
     font-family: 'Press Start 2P', cursive;
+    /*background-image: url("Images/Background.svg");
+    background-size: auto;
+    background-repeat: no-repeat;*/
 }
 
 .wrapper {

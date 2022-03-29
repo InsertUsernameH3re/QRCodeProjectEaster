@@ -8,11 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="app.js"></script>
     <title>Egghunt - otázky</title>
 </head>
-<body>
+<body onload="login()">
     <div class="wrapper">
-        <h1>Přihlas se</h1>
+        <h1 id="login">Přihlas se</h1>
     </div>
 
     <div class="wrapper">
@@ -36,8 +37,43 @@
 
 
 <?php
+// Includes login to the database
+include "data.php";
+//Sets default parameter
+$email_end = "@purkynka.cz";
 
+// Create connection
+$mysqli = new mysqli($servername, $username, $password, $db);
 
+// Check connection
+if ($mysqli->connect_error) {
+  die("Connection to the database failed, please try again later");
+}
 
+if (isset($_POST['email']) and $_POST['email'] != ""){
+    $email = $_POST['email'] . $email_end;
+    $password = $_POST['password'];
 
+    $result = $mysqli->query("SELECT email FROM user WHERE email = '$email'");
+    $row = $result -> fetch_assoc();
+    if ($row != null and $row['email'] == $email){
+        $result = $mysqli->query("SELECT password FROM user WHERE email = '$email'");
+        $row = $result -> fetch_assoc();
+        if($row['password'] == $password){
+            setcookie("registered", "true", time() + 86400, $secure = true);
+            setcookie("logged", "true", time() + 86400, $secure = true);
+            setcookie("email", $_POST['email'], time() + 86400, $secure = true);
+            
+        } else {
+            echo "Error: Wrong password";
+        }
+    } else {
+        echo "Error: Wrong credentials, user does not exist";
+    }
+
+} elseif(isset($_POST['email']) and $_POST['email'] == "") {
+    echo "Error: No credentials provided, please try again";
+}
+
+$mysqli->close();
 ?>
