@@ -13,12 +13,6 @@
 <body>
 
 <?php
-setcookie("test_cookie", "test", time() + 1, '/');
-if(count($_COOKIE) > 0) {
-  echo "Cookies are enabled.";
-} else {
-  echo "Cookies are disabled.";
-}
 // Includes login to the database
 include "data.php";
 // Sets default_value to 0
@@ -34,21 +28,27 @@ if ($mysqli->connect_error) {
   die("Connection to the database failed, please try again later");
 }
 // Adding new query to database
-try {
-  $email_whole = $_POST['email'] . $email_end;
+if (strlen($_POST['email'])> 5 and strlen($_POST['password']) > 0) {
 
-  $statement = $mysqli->prepare("INSERT INTO user (email, score) VALUES (?,?)");
-  $statement->bind_param("si", $email_whole, $default_score);
-  $statement->execute();
-  echo "<div class='wrapper' id='success'>Registration completed successfully</div>";
+  try {
+    $email_whole = $_POST['email'] . $email_end;
+    $password = $_POST['password'];
 
-  // Error handeling
-} catch (Exception $e) {
-  if ($mysqli->errno == 1062){
-    echo "<div class='wrapper' id='error'>Error: User already registered with this email address. Error number: ". $mysqli->errno . "</div>";
-  } else {
-    echo "<div class='wrapper' id='error'>Error: Wrong email address entered. Try again</div>";
+    $statement = $mysqli->prepare("INSERT INTO user (email, score, password) VALUES (?,?,?)");
+    $statement->bind_param("sis", $email_whole, $default_score, $password);
+    $statement->execute();
+    echo "<div class='wrapper' id='success'>Registration completed successfully</div>";
+    setcookie("registered", "true", time() + 864000, $secure = true);
+    setcookie("logged", "false", time() + 864000, $secure = true);
+
+// Error handeling
+  } catch (Exception $e) {
+    if ($mysqli->errno == 1062){
+      echo "<div class='wrapper' id='error'>Error: User already registered with this email address. Error number: ". $mysqli->errno . "</div>";
+    }
   }
+} else {
+  echo "<div class='wrapper' id='error'>Error: Wrong email address or password. Try again</div>";
 }
 
 $mysqli->close();

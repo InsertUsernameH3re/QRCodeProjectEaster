@@ -9,10 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="app.js"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <title>Purkyňka egg hunt</title>
 </head>
-<body>
+<body onload="Cookie_Get()">
 
   <div class="image_div">
     <div class="wrapper2">Purkyňka parlament</div>
@@ -24,19 +23,24 @@
     <h1>Purkyňka egg hunt</h1>
     </div>
 
-    <div class="wrapper">
-    <p>Toto je přihlašovací stránka na nadcházející školní akci která se bude konat v den 17.4. Bližší informace, pravidla a postup jak hrát se dozvíte v den konaní :)</p>
-    </div>
+    <br>
+    <p>- Přihlášení je možné pouze jednou, zkontrolujte si email a heslo</p><br>
+    <b><p>- !!!Po přihlášení nemažte soubory cookies stránky, soutež vám potom nebude fungovat!!!</p></b><br>
+    <p>- Nepravé emailové adresy budou ze hry vyřazeny</p>
     
-    <div class="wrapper">
-    <form action="connection.php" method="post">
+    <div class="wrapper" id="wrap">
+    <form action="connection.php" method="post" id="form">
       <div class="wrapper">
         <label for="email">Školní email:</label><br>
       </div>
-      <input type="text" name="email" maxlength="64" placeholder="prijmeni.jmeno" id="email"><br>
-      <span class="email">@purkynka.cz</span>
+      <input type="text" name="email" maxlength="32" placeholder="prijmeni.jmeno" id="email"><br>
+      <span class="email">@purkynka.cz</span><br>
       <div class="wrapper">
-        <input type="submit" value="Submit" class="submit" onclick="Cookie_Create()">
+        <label for="password">Heslo:</label><br>
+      </div>
+      <input type="text" name="password" maxlength="32" placeholder="Password" id="password"><br>
+      <div class="wrapper">
+        <input type="submit" value="Submit" class="submit">
       </div>
     </form>
     </div>
