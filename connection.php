@@ -33,7 +33,7 @@ if (strlen($_POST['email'])> 5 and strlen($_POST['password']) > 0) {
 
   try {
     $email_whole = $_POST['email'] . $email_end;
-    $password = $_POST['password'];
+    $password = hash('sha256', $_POST['password']);
 
     $statement = $mysqli->prepare("INSERT INTO user (email, score, password) VALUES (?,?,?)");
     $statement->bind_param("sis", $email_whole, $default_score, $password);

@@ -26,7 +26,7 @@
       <div class="wrapper">
         <label for="password">Heslo:</label><br>
       </div>
-      <input type="text" name="password" maxlength="32" placeholder="Password" id="password"><br>
+      <input type="password" name="password" maxlength="32" placeholder="Password" id="password"><br>
       <div class="wrapper">
         <input type="submit" value="Submit" class="submit">
       </div>
@@ -50,9 +50,9 @@ if ($mysqli->connect_error) {
   die("Connection to the database failed, please try again later");
 }
 
-if (isset($_POST['email']) and $_POST['email'] != ""){
+if (isset($_POST['email']) and $_POST['email'] != "" and $_POST['password'] != ""){
     $email = $_POST['email'] . $email_end;
-    $password = $_POST['password'];
+    $password = hash('sha256', $_POST['password']);
 
     $result = $mysqli->query("SELECT email FROM user WHERE email = '$email'");
     $row = $result -> fetch_assoc();
