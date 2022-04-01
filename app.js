@@ -21,7 +21,7 @@ function login() {
     let registration = document.cookie;
     registration = registration.split("; ")
     if (registration[registration.indexOf("logged=true")] == "logged=true") {
-        var old = document.getElementById("form").remove();
-        var old = document.getElementById("login").remove();
+        document.getElementById("form").style.display = "hidden";
+        document.getElementById("login").style.display = "hidden";
     }
 }

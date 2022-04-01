@@ -44,7 +44,7 @@ $email_end = "@purkynka.cz";
 
 // Create connection
 $mysqli = new mysqli($servername, $username, $password, $db);
-
+$mysqli->set_charset("UTF8");
 // Check connection
 if ($mysqli->connect_error) {
   die("Connection to the database failed, please try again later");
@@ -54,15 +54,14 @@ if (isset($_POST['email']) and $_POST['email'] != "" and $_POST['password'] != "
     $email = $_POST['email'] . $email_end;
     $password = hash('sha256', $_POST['password']);
 
-    $result = $mysqli->query("SELECT email FROM user WHERE email = '$email'");
+    $result = $mysqli->query("SELECT * FROM user WHERE email = '$email'");
     $row = $result -> fetch_assoc();
+
     if ($row != null and $row['email'] == $email){
-        $result = $mysqli->query("SELECT password FROM user WHERE email = '$email'");
-        $row = $result -> fetch_assoc();
         if($row['password'] == $password){
             setcookie("registered", "true", time() + 86400, $secure = true);
             setcookie("logged", "true", time() + 86400, $secure = true);
-            setcookie("email", $_POST['email'], time() + 86400, $secure = true);
+            setcookie("id", $row['iduser'], time() + 86400, $secure = true);
             
         } else {
             echo "Error: Wrong password";

@@ -23,6 +23,7 @@ $email_end = "@purkynka.cz";
 
 // Create connection
 $mysqli = new mysqli($servername, $username, $password, $db);
+$mysqli->set_charset("UTF8");
 
 // Check connection
 if ($mysqli->connect_error) {

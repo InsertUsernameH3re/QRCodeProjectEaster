@@ -7,9 +7,7 @@ body {
     background-color: wheat;
     font-size: 20px;
     font-family: 'Press Start 2P', cursive;
-    /*background-image: url("Images/Background.svg");
-    background-size: auto;
-    background-repeat: no-repeat;*/
+    color: rgb(94, 92, 92);
 }
 
 .wrapper {
@@ -75,6 +73,18 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.bg {
+    position: absolute;
+    background-image: url("Images/Main-telefon.svg");
+    height: 100%;
+    width: 100%;
+    margin-top: -10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
 }
 
 @keyframes logo {
