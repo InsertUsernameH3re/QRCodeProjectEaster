@@ -11,7 +11,7 @@
     <script src="app.js"></script>
     <title>Egghunt - otázky</title>
 </head>
-<body onload="login()">
+<body>
     <div class="wrapper">
         <h1 id="login">Přihlas se</h1>
     </div>
@@ -37,6 +37,7 @@
 
 
 <?php
+error_reporting(0);
 // Includes login to the database
 include "data.php";
 //Sets default parameter
@@ -74,5 +75,10 @@ if (isset($_POST['email']) and $_POST['email'] != "" and $_POST['password'] != "
     echo "Error: No credentials provided, please try again";
 }
 
+if ($_COOKIE['logged'] == true){
+  header("Location: https://velikonoce.sspbrno.cz/questions.php");
+  die();
+  $mysqli->close();
+}
 $mysqli->close();
 ?>

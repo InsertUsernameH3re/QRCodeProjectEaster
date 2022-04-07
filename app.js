@@ -17,11 +17,3 @@ function backgroundColor() {
     }
 }
 
-function login() {
-    let registration = document.cookie;
-    registration = registration.split("; ")
-    if (registration[registration.indexOf("logged=true")] == "logged=true") {
-        document.getElementById("form").style.display = "hidden";
-        document.getElementById("login").style.display = "hidden";
-    }
-}
