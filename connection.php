@@ -14,10 +14,10 @@
 <body onload="backgroundColor()">
 
 <?php
+error_reporting(0);
 // Includes login to the database
 include "data.php";
-// Sets default_value to 0
-$default_score = 0;
+
 // Sets email_end to @purkynka.cz
 $email_end = "@purkynka.cz";
 
@@ -36,8 +36,8 @@ if (strlen($_POST['email'])> 5 and strlen($_POST['password']) > 0) {
     $email_whole = $_POST['email'] . $email_end;
     $password = hash('sha256', $_POST['password']);
 
-    $statement = $mysqli->prepare("INSERT INTO user (email, score, password) VALUES (?,?,?)");
-    $statement->bind_param("sis", $email_whole, $default_score, $password);
+    $statement = $mysqli->prepare("INSERT INTO user (email, password) VALUES (?,?)");
+    $statement->bind_param("ss", $email_whole, $password);
     $statement->execute();
     echo "<div class='wrapper' id='success'>Registration completed successfully</div>";
     setcookie("registered", "true", time() + 864000, $secure = true);

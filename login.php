@@ -9,9 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="app.js"></script>
-    <title>Egghunt - otázky</title>
+    <title>Egghunt - login</title>
 </head>
 <body>
+  <div class="bg"></div>
+
     <div class="wrapper">
         <h1 id="login">Přihlas se</h1>
     </div>
@@ -32,8 +34,6 @@
       </div>
     </form>
     </div>
-</body>
-</html>
 
 
 <?php
@@ -60,10 +60,13 @@ if (isset($_POST['email']) and $_POST['email'] != "" and $_POST['password'] != "
 
     if ($row != null and $row['email'] == $email){
         if($row['password'] == $password){
-            setcookie("registered", "true", time() + 86400, $secure = true);
-            setcookie("logged", "true", time() + 86400, $secure = true);
-            setcookie("id", $row['iduser'], time() + 86400, $secure = true);
-            
+          $statement = $mysqli->prepare("UPDATE user SET login = 'TRUE' WHERE iduser = ". $row['iduser']);
+          $statement->execute();
+
+          setcookie("id", $_POST['email'], time() + 86400, $secure = true);
+          setcookie("score", $row['score'], time() + 86400, $secure = true);
+          setcookie("registered", "true", time() + 86400, $secure = true);
+          header("Refresh:0");
         } else {
             echo "Error: Wrong password";
         }
@@ -74,11 +77,19 @@ if (isset($_POST['email']) and $_POST['email'] != "" and $_POST['password'] != "
 } elseif(isset($_POST['email']) and $_POST['email'] == "") {
     echo "Error: No credentials provided, please try again";
 }
+if (isset($_COOKIE['id'])){
+  $email = $_COOKIE['id'] . $email_end;
+  $result = $mysqli->query("SELECT * FROM user WHERE email = '$email'");
+  $row = $result->fetch_assoc();
 
-if ($_COOKIE['logged'] == true){
-  header("Location: https://velikonoce.sspbrno.cz/questions.php");
-  die();
-  $mysqli->close();
+  if ($row['login'] != null and $row['login'] == "TRUE"){
+    header("Location: ./questions.php");
+    die();
+    $mysqli->close();
+  }
 }
 $mysqli->close();
 ?>
+
+</body>
+</html>

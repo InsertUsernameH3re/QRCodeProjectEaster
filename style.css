@@ -4,9 +4,11 @@
 }
 
 body {
+    margin-top: 10px;
     background-color:#5DB4E6;
     font-size: 20px;
     font-family: 'Press Start 2P', cursive;
+    text-align: center;
     /*color: rgb(94, 92, 92);*/
 }
 
