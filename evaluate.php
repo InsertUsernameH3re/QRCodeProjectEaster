@@ -123,7 +123,7 @@ if ($_COOKIE['been'] != "true" and $_COOKIE['count'] < 2) {
     echo"Vaše aktualní skore je: " . $row['score'];
 }
 setcookie("been", "true", time() + 86400, $secure = true);
-
+$mysqli->close();
 ?>
 </body>
 </html>

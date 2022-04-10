@@ -138,6 +138,7 @@ if(isset($_COOKIE['id'])){
 if(isset($_COOKIE['count']) == false){
     setcookie("count", 0, time() + 86400, $secure = true);
 }
+$mysqli->close();
 ?>
 
 </body>
