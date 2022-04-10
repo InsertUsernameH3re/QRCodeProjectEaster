@@ -1,3 +1,5 @@
+let elapsed = 0;
+
 function Cookie_Get() {
     let registration = document.cookie;
     registration = registration.split("; ")
@@ -17,3 +19,12 @@ function backgroundColor() {
     }
 }
 
+function timer() {
+    let elapsed = 0;
+    setInterval(timeCounter, 1000)
+}
+
+function timeCounter() {
+    elapsed++;
+    var time = document.cookie = "time=" + elapsed;
+}

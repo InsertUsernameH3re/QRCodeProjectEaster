@@ -11,7 +11,7 @@
     <script src="app.js"></script>
     <title>Egghunt - otázky</title>
 </head>
-<body>
+<body onload="timer()">
 
 
 <?php
@@ -46,17 +46,82 @@ if(isset($_COOKIE['id'])){
         die();
         $mysqli->close();
     }else{
-        $question = rand(1,10);
-        echo "<p>" . $question . ".</p>";
-        if ($row['level'] == 0 or $row['level'] == 1){
-            $result = $mysqli->query("SELECT * FROM questions WHERE idquestions = '$question'");
-            $row = $result -> fetch_assoc();
 
-
-            echo "<h1>Otázka:</h1><br>";
-            echo "<h2>" . $row['question'] . "</h2>";
+        function scheme1($row){
+            echo "<form method='get'>";
+            echo "<input type='radio' name='input'><br>";
+            echo "<label for='input'>" . $row['answer'] . "</label><br>";
+            echo "<input type='radio' name='input'><br>";
+            echo "<label for='input'>" . $row['hering1'] . "</label><br>";
+            echo "<input type='radio' name='input'><br>";
+            echo "<label for='input'>" . $row['hering2'] . "</label><br>";
+            echo "<input type='submit' name='submit' value='Odpovědět'>";
+            echo "</form>";
         }
-        
+
+        function scheme2($row){
+            echo "<form method='get'>";
+            echo "<input type='radio' name='input'><br>";
+            echo "<label for='input'>" . $row['hering1'] . "</label><br>";
+            echo "<input type='radio' name='input'><br>";
+            echo "<label for='input'>" . $row['answer'] . "</label><br>";
+            echo "<input type='radio' name='input'><br>";
+            echo "<label for='input'>" . $row['hering2'] . "</label><br>";
+            echo "<input type='submit' name='submit' value='Odpovědět'>";
+            echo "</form>";
+        }
+
+        function scheme3($row){
+            echo "<form method='get'>";
+            echo "<input type='radio' name='input'><br>";
+            echo "<label for='input'>" . $row['hering2'] . "</label><br>";
+            echo "<input type='radio' name='input'><br>";
+            echo "<label for='input'>" . $row['hering1'] . "</label><br>";
+            echo "<input type='radio' name='input'><br>";
+            echo "<label for='input'>" . $row['answer'] . "</label><br>";
+            echo "<input type='submit' name='submit' value='Odpovědět'>";
+            echo "</form>";
+        }
+
+        function generate_QandA($level, $mysqli, $question){
+
+                $result = $mysqli->query("SELECT * FROM questions WHERE idquestions = '$level[$question]'");
+                $row = $result -> fetch_assoc();
+                
+                echo "<h1>Otázka:</h1><br>";
+                echo "<h2>" . $row['question'] . "</h2>";
+                $scheme = rand(1,3);
+                
+                if ($scheme == 1){
+                    scheme1($row);
+                }
+            
+                if ($scheme == 2){
+                    scheme2($row);
+                }
+            
+                if ($scheme == 3){
+                    scheme3($row);
+                }
+            }
+            
+            $question = rand(0,9);
+
+            if ($row['level'] == 0 or $row['level'] == 1){
+                generate_QandA($level_1, $mysqli, $question);
+            }
+            if ($row['level'] == 2){
+                generate_QandA($level_2, $mysqli, $question);
+            }
+            if ($row['level'] == 3){
+                generate_QandA($level_3, $mysqli, $question);
+            }
+            if ($row['level'] == 4){
+                generate_QandA($level_4, $mysqli, $question);
+            }
+            if ($row['level'] == 5){
+                generate_QandA($level_5, $mysqli, $question);
+            }
     }
 }else{
     header("Location: ./login.php");
