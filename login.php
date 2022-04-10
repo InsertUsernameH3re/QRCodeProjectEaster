@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-cs">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,6 +66,7 @@ if (isset($_POST['email']) and $_POST['email'] != "" and $_POST['password'] != "
           setcookie("id", $_POST['email'], time() + 86400, $secure = true);
           setcookie("score", $row['score'], time() + 86400, $secure = true);
           setcookie("registered", "true", time() + 86400, $secure = true);
+          setcookie("count", 0, time() + 86400, $secure = true);
           header("Refresh:0");
         } else {
             echo "Error: Wrong password";

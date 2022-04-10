@@ -20,8 +20,9 @@ function backgroundColor() {
 }
 
 function timer() {
+    var cook = document.cookie = "been=false";
     let elapsed = 0;
-    setInterval(timeCounter, 1000)
+    setInterval(timeCounter, 1000);
 }
 
 function timeCounter() {

@@ -12,9 +12,10 @@
     <title>Egghunt - otázky</title>
 </head>
 <body onload="timer()">
-
+<div class="bg"></div>
 
 <?php
+error_reporting(0);
 // Includes login to the database
 include "data.php";
 
@@ -46,38 +47,41 @@ if(isset($_COOKIE['id'])){
         die();
         $mysqli->close();
     }else{
+        if ($_COOKIE['count'] != 2){
+            
+        
 
         function scheme1($row){
-            echo "<form method='get'>";
-            echo "<input type='radio' name='input'><br>";
+            echo "<form method='post' action='evaluate.php'>";
+            echo "<input type='radio' name='input' value='" . $row['answer'] . "'><br>";
             echo "<label for='input'>" . $row['answer'] . "</label><br>";
-            echo "<input type='radio' name='input'><br>";
+            echo "<input type='radio' name='input' value='" . $row['hering1'] . "'><br>";
             echo "<label for='input'>" . $row['hering1'] . "</label><br>";
-            echo "<input type='radio' name='input'><br>";
+            echo "<input type='radio' name='input' value='" . $row['hering2'] . "'><br>";
             echo "<label for='input'>" . $row['hering2'] . "</label><br>";
             echo "<input type='submit' name='submit' value='Odpovědět'>";
             echo "</form>";
         }
 
         function scheme2($row){
-            echo "<form method='get'>";
-            echo "<input type='radio' name='input'><br>";
+            echo "<form method='post' action='evaluate.php'>";
+            echo "<input type='radio' name='input' value='" . $row['hering1'] . "'><br>";
             echo "<label for='input'>" . $row['hering1'] . "</label><br>";
-            echo "<input type='radio' name='input'><br>";
+            echo "<input type='radio' name='input' value='" . $row['answer'] . "'><br>";
             echo "<label for='input'>" . $row['answer'] . "</label><br>";
-            echo "<input type='radio' name='input'><br>";
+            echo "<input type='radio' name='input' value='" . $row['hering2'] . "'><br>";
             echo "<label for='input'>" . $row['hering2'] . "</label><br>";
             echo "<input type='submit' name='submit' value='Odpovědět'>";
             echo "</form>";
         }
 
         function scheme3($row){
-            echo "<form method='get'>";
-            echo "<input type='radio' name='input'><br>";
+            echo "<form method='post' action='evaluate.php'>";
+            echo "<input type='radio' name='input' value='" . $row['hering2'] . "'><br>";
             echo "<label for='input'>" . $row['hering2'] . "</label><br>";
-            echo "<input type='radio' name='input'><br>";
+            echo "<input type='radio' name='input' value='" . $row['hering1'] . "'><br>";
             echo "<label for='input'>" . $row['hering1'] . "</label><br>";
-            echo "<input type='radio' name='input'><br>";
+            echo "<input type='radio' name='input' value='" . $row['answer'] . "'><br>";
             echo "<label for='input'>" . $row['answer'] . "</label><br>";
             echo "<input type='submit' name='submit' value='Odpovědět'>";
             echo "</form>";
@@ -122,13 +126,18 @@ if(isset($_COOKIE['id'])){
             if ($row['level'] == 5){
                 generate_QandA($level_5, $mysqli, $question);
             }
+        }else{
+            echo "Tento qr code je již vyčerpán! Najděte další podle indicí";
+        }
     }
 }else{
     header("Location: ./login.php");
     die();
     $mysqli->close();
 }
-
+if(isset($_COOKIE['count']) == false){
+    setcookie("count", 0, time() + 86400, $secure = true);
+}
 ?>
 
 </body>
