@@ -60,6 +60,7 @@ if(isset($_COOKIE['id'])){
             echo "<input type='radio' name='input' value='" . $row['hering2'] . "'><br>";
             echo "<label for='input'>" . $row['hering2'] . "</label><br>";
             echo "<input type='submit' name='submit' value='Odpovědět'>";
+            echo "<p>Refreshněte stránku pro novou otázku</p>";
             echo "</form>";
         }
 
@@ -72,6 +73,7 @@ if(isset($_COOKIE['id'])){
             echo "<input type='radio' name='input' value='" . $row['hering2'] . "'><br>";
             echo "<label for='input'>" . $row['hering2'] . "</label><br>";
             echo "<input type='submit' name='submit' value='Odpovědět'>";
+            echo "<p>Refreshněte stránku pro novou otázku</p>";
             echo "</form>";
         }
 
@@ -84,6 +86,7 @@ if(isset($_COOKIE['id'])){
             echo "<input type='radio' name='input' value='" . $row['answer'] . "'><br>";
             echo "<label for='input'>" . $row['answer'] . "</label><br>";
             echo "<input type='submit' name='submit' value='Odpovědět'>";
+            echo "<p>Refreshněte stránku pro novou otázku</p>";
             echo "</form>";
         }
 
