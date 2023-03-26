@@ -1,53 +1,59 @@
 <!DOCTYPE html>
-<html lang="en-cs">
+<html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Purkyňka Egg Hunt 2023">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
     <script src="app.js"></script>
-    <title>Purkyňka egg hunt</title>
+
+    <title>Purkyňka Egg Hunt</title>
 </head>
+
 <body onload="Cookie_Get()">
 
-  <div class="bg"></div>
+    <div class="bg"></div>
 
-  <div class="image_div">
-    <div class="wrapper2">Purkyňka parlament</div>
-    <img class="image" src="./Images/LogoParlament.svg" alt="Logo parlamentu">
-    <div class="wrapper">presents</div>
-  </div>
-
-    <div class="wrapper">
-    <h1>Purkyňka egg hunt</h1>
+    <div class="image_div">
+        <div class="wrapper2">Purkyňka parlament</div>
+        <img class="image" src="./Images/LogoParlament.svg" alt="Logo parlamentu">
+        <div class="wrapper">presents</div>
     </div>
 
-    <br>
-    <p>- Přihlášení je možné pouze jednou, zkontrolujte si email a heslo</p><br>
-    <b><p>- !!!Po přihlášení nemažte soubory cookies stránky, soutež vám potom nebude fungovat!!!</p></b><br>
-    <p>- Nepravé emailové adresy budou ze hry vyřazeny</p><br>
-    <p>- Do pole email zadejte jen přijmeni a jmeno</p>
+    <h1>Purkyňka egg hunt 2023</h1>
     
-    
-    <div class="wrapper" id="wrap">
+    <div class="wrapper" data-selector="0" >
+        <br>
+        <p>Přihlášení je možné pouze jednou, zkontrolujte si email a heslo</p><br>
+        
+        <p style="color: #da1d1d">!!!</p>
+        <p style="color: #ff6262">Po přihlášení nemažte soubory cookies stránky, soutež vám potom nebude fungovat</p>
+        <p style="color: #da1d1d">!!!</p><br>
+        
+        <p>Nepravé emailové adresy budou ze hry vyřazeny</p><br>
+        <p style="margin-top: 10px; display: inline-block;">Do pole email zadejte jen přijmeni a jmeno</p>
+    </div>
+
     <form action="connection.php" method="post" id="form">
-      <div class="wrapper">
-        <label for="email">Školní email:</label><br>
-      </div>
-      <input type="text" name="email" maxlength="32" placeholder="prijmeni.jmeno" id="email"><br>
-      <span class="email">@purkynka.cz</span><br>
-      <div class="wrapper">
-        <label for="password">Heslo:</label><br>
-      </div>
-      <input type="password" name="password" maxlength="32" placeholder="Password" id="password"><br>
-      <div class="wrapper">
-        <input type="submit" value="Submit" class="submit">
-      </div>
+        <div class="wrapper" data-selector="1">
+            <label for="email">Školní email:</label><br>
+            <input type="text" name="email" maxlength="32" placeholder="prijmeni.jmeno" id="email"><br>
+            <span class="email">@purkynka.cz</span><br>
+        
+            <label for="password">Heslo:</label><br>
+            <input type="password" name="password" maxlength="32" placeholder="Password" id="password"><br>
+
+            <input type="submit" value="Submit" class="submit">
+        </div>
     </form>
-    </div>
 
 </body>
+
 </html>
