@@ -14,8 +14,6 @@
 <body onload="timer()">
 <div class="bg"></div>
 
-<div class="wrapper">
-   <h1>Otázky</h1>
    
 <?php
 error_reporting(0);
@@ -145,6 +143,5 @@ if(isset($_COOKIE['count']) == false){
 $mysqli->close();
 ?>
 
-</div>
 </body>
 </html>
