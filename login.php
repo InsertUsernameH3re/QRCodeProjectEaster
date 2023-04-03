@@ -37,7 +37,7 @@
     </form>
     </div> -->
 
-   <form action="connection.php" method="post" id="form">
+   <form method="post" id="form">
       <div class="wrapper" data-selector="1">
          <label for="email">Školní email:</label><br>
          <input type="text" name="email" maxlength="32" placeholder="prijmeni.jmeno" id="email"><br>
