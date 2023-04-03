@@ -13,9 +13,10 @@ function Cookie_Get() {
 
 function backgroundColor() {
     if (document.body.contains(document.getElementById("success"))) {
-        document.body.style.backgroundColor = "green";
+       document.body.style.backgroundColor = "#00ff0091";
+
     } else {
-        document.body.style.backgroundColor = "red";
+        document.body.style.backgroundColor = "#ff000005";
     }
 }
 

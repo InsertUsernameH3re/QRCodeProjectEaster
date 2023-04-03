@@ -117,9 +117,19 @@ input::placeholder {
     justify-content: center;
 }
 
+.wrapper3 {
+   margin: 0;
+   padding: 0;
+
+   width: 100vw;
+   height: 100vh;
+
+   background-color: #00ff0091;
+}
+
 .bg {
     position: absolute;
-    background-image: url("Images/Background2023.png");
+    background-image: url("./Images/Background2023.png");
     height: 100%;
     width: 100%;
     margin-top: -10px;

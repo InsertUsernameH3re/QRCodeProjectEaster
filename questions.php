@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -14,6 +14,9 @@
 <body onload="timer()">
 <div class="bg"></div>
 
+<div class="wrapper">
+   <h1>Otázky</h1>
+   
 <?php
 error_reporting(0);
 // Includes login to the database
@@ -48,8 +51,6 @@ if(isset($_COOKIE['id'])){
         $mysqli->close();
     }else{
         if ($_COOKIE['count'] != 2){
-            
-        
 
         function scheme1($row){
             echo "<form method='post' action='evaluate.php'>";
@@ -144,5 +145,6 @@ if(isset($_COOKIE['count']) == false){
 $mysqli->close();
 ?>
 
+</div>
 </body>
 </html>
