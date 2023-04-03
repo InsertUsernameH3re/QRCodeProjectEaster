@@ -41,18 +41,20 @@
         <p style="margin-top: 10px; display: inline-block;">Do pole email zadejte jen přijmeni a jmeno</p>
     </div>
 
-    <form action="connection.php" method="post" id="form">
-        <div class="wrapper" data-selector="1">
-            <label for="email">Školní email:</label><br>
-            <input type="text" name="email" maxlength="32" placeholder="prijmeni.jmeno" id="email"><br>
-            <span class="email">@purkynka.cz</span><br>
-        
-            <label for="password">Heslo:</label><br>
-            <input type="password" name="password" maxlength="32" placeholder="Password" id="password"><br>
+    <div class="wrapper" id="wrap">
+        <form action="connection.php" method="post" id="form">
+            <div class="wrapper" data-selector="1">
+                <label for="email">Školní email:</label><br>
+                <input type="text" name="email" maxlength="32" placeholder="prijmeni.jmeno" id="email"><br>
+                <span class="email">@purkynka.cz</span><br>
+            
+                <label for="password">Heslo:</label><br>
+                <input type="password" name="password" maxlength="32" placeholder="Password" id="password"><br>
 
-            <input type="submit" value="Submit" class="submit">
-        </div>
-    </form>
+                <input type="submit" value="Submit" class="submit">
+            </div>
+        </form>
+    </div>
 
 </body>
 
