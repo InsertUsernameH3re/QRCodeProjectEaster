@@ -100,7 +100,7 @@ if ($_COOKIE['been'] != "true" and $_COOKIE['count'] < 2) {
 
         $level = $row['level'] + 1;
         $result = $mysqli->query("UPDATE user SET level='$level' WHERE email = '$email_whole'");
-        setcookie("level", "true", time() + 30, $secure = "true");
+        setcookie("level", "true", time() + 60, $secure = "true");
     }
     if ($level != 5){
     echo"<br><br>Indície kde naleznete další vejce:";
