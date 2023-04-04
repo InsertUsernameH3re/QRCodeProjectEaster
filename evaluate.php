@@ -104,11 +104,10 @@ if ($_COOKIE['been'] != "true" and $_COOKIE['count'] < 2) {
     }
     if ($level != 5){
     echo"<br><br>Indície kde naleznete další vejce:";
-    echo"<br><br>1. Nové místnosti, nová platforma. Dokázala se tam navést voda.";
-    echo"<br><br>2. Knihy, papíry, stolky.";
-    echo"<br><br>3. Panin.";
-    echo"<br><br>4. Člověk, kterého nikdo neviděl, v jeho místnosti, ocítnout se nechceš. Tam nenajdeš poslední qr. Pojď zpět, a rozhlédni se.";
-    echo"<br><br>5. Jdi odstřihnout zámek, tam najdeš další kód.";
+    echo"<br><br>1. Levnější Margotka swag!";
+    echo"<br><br>2. Jeden nám vymyslel iphone a ten druhý dal do všech čipy.";
+    echo"<br><br>3. Nelejte vodu do květináčů!";
+    echo"<br><br>4. Máš chuť na buřt? Ne, já radši klobásku.";
     }else{
         echo"<br><h1>🎉Dohráli jste hru!!🎉</h1>";
         echo "<div class='wrapper' id='success'>Děkujeme za účast a těšíme se na vás další rok. Váš parlament.</div>";
